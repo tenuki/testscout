@@ -1,8 +1,8 @@
 [package]
-name = "remediated-avoid-autokey-upgradable-remediated-1"
+name = "divide-before-multiply-vulnerable-1"
 version = "0.1.0"
-authors = ["[your_name] <[your_email]>"]
 edition = "2021"
+authors = ["[your_name] <[your_email]>"]
 
 [lib]
 path = "src/lib.rs"
@@ -22,6 +22,7 @@ e2e-tests = []
 ink = { workspace = true }
 scale = { workspace = true }
 scale-info = { workspace = true }
+
 
 [dev-dependencies]
 ink_e2e = { workspace = true }

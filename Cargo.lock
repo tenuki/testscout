@@ -1459,6 +1459,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "divide-before-multiply-remediated-1"
+version = "0.1.0"
+dependencies = [
+ "ink",
+ "ink_e2e",
+ "parity-scale-codec",
+ "scale-info",
+]
+
+[[package]]
+name = "divide-before-multiply-vulnerable-1"
+version = "0.1.0"
+dependencies = [
+ "ink",
+ "ink_e2e",
+ "parity-scale-codec",
+ "scale-info",
+]
+
+[[package]]
 name = "docify"
 version = "0.2.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4166,16 +4186,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "adad44e29e4c806119491a7f06f03de4d1af22c3a680dd47f1e6e179439d1f56"
 
 [[package]]
-name = "remediated-avoid-autokey-upgradable-remediated-1"
-version = "0.1.0"
-dependencies = [
- "ink",
- "ink_e2e",
- "parity-scale-codec",
- "scale-info",
-]
-
-[[package]]
 name = "rfc6979"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6444,16 +6454,6 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
-
-[[package]]
-name = "vulnerable-avoid-autokey-upgradable-vulnerable-1"
-version = "0.1.0"
-dependencies = [
- "ink",
- "ink_e2e",
- "parity-scale-codec",
- "scale-info",
-]
 
 [[package]]
 name = "w3f-bls"

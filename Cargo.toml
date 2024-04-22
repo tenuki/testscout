@@ -1,14 +1,13 @@
 [workspace]
 exclude = [".cargo", "target"]
-members = ["avoid-autokey-upgradable-*/*"]
+members = ["divide-before-multiply-*/*"]
 resolver = "2"
 
 [workspace.dependencies]
 ink = { version = "5.0.0", default-features = false }
 scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
-scale-info = { version = "2.6", default-features = false, features = ["derive"] }
+scale-info = { version = "2.6", default-features = false, features = ["derive"]}
 ink_e2e = { version = "=5.0.0" }
-
 
 [profile.release]
 codegen-units = 1
@@ -24,8 +23,3 @@ strip = "symbols"
 debug-assertions = true
 inherits = "release"
 
-
-[workspace.metadata.dylint]
-libraries = [
-   { path = "/home/flerena/coinfabrik/scout/scout/detectors/avoid-autokey-upgradable"},
-]
