@@ -36,7 +36,7 @@ mod avoid_format {
 
         #[test]
         fn crash_works() {
-            let avoid_format = AvoidFormat::new(false);
+            let avoid_format = AvoidFormat::new(true);
             assert_eq!(
                 avoid_format.crash(),
                 Err(Error::FormatError {
