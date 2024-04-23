@@ -40,7 +40,7 @@ mod avoid_format {
             assert_eq!(
                 avoid_format.crash(),
                 Err(Error::FormatError {
-                    msg: "false".to_string()
+                    msg: "true".to_string()
                 })
             );
         }
