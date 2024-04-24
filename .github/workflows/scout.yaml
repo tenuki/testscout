@@ -9,6 +9,31 @@ jobs:
       - name: list files
         run: ls -la
       - name: do scout
-        uses: coinfabrik/scout-actions@v2.1
+        uses: coinfabrik/scout-actions@v2.2
+        id: scout_test_id
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
+          scout_args: '--output md --output-file $GITHUB_OUTPUT'
+
+      - name: Find comment
+        id: find_comment
+        uses: peter-evans/find-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-includes: "🎉 **Scout Report** 🎉"
+
+      - name: Create or Update PR Comment
+        uses: peter-evans/create-or-update-comment@v4.0.0
+        with:
+          token: ${{ secrets.CITOKEN }}
+          comment-id: ${{ steps.find_comment.outputs.comment-id }}
+          edit-mode: replace
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🎉 **Scout Report** 🎉
+
+            ${{join(steps.scout_test_id.outputs.*, '\n')}} 
+            
+            
+            //needs.validate-detectors.outputs.status
+            The workflow has completed. Great job! 🚀
