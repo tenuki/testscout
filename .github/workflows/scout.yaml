@@ -13,7 +13,7 @@ jobs:
         id: scout_test_id
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
-          scout_args: "--output md --output-path $GITHUB_OUTPUT"
+          scout_args: "--output-format md --output-path $GITHUB_OUTPUT"
 
       - name: Find comment
         id: find_comment
