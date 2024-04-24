@@ -19,6 +19,7 @@ jobs:
         id: find_comment
         uses: peter-evans/find-comment@v3
         with:
+          token: ${{ secrets.CITOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body-includes: "🎉 **Scout Report** 🎉"
 
