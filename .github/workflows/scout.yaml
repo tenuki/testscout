@@ -20,8 +20,7 @@ jobs:
         id: find_comment
         uses: peter-evans/find-comment@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ github.event.number }}
           body-includes: "🎉 **Scout Report** 🎉"
         continue-on-error: true
 
@@ -33,10 +32,11 @@ jobs:
           edit-mode: replace
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🎉 **Scout Report** 🎉
-
-            ${{join(steps.scout_test_id.outputs.*, '\n')}} 
-            
-            
+            1. 🎉 **Scout Report** 🎉
+            2.
+            3. ${{join(steps.scout_test_id.outputs.*, '\n')}} 
+            4. - ${{ steps.find_comment.outputs.comment-id }}
+            5. - ${{ github.event.pull_request.number }}
+            6. - ${{ github.event.number }} 
             //needs.validate-detectors.outputs.status
             The workflow has completed. Great job! 🚀
