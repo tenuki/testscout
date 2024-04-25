@@ -10,7 +10,7 @@ jobs:
         run: ls -la
       - name: do scout
         #uses: coinfabrik/scout-actions@v2.2
-        uses: tenuki/my-test-scout-actions@testing2
+        uses: tenuki/my-test-scout-actions@testing3
         id: scout_test_id
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
@@ -33,7 +33,7 @@ jobs:
           issue-number: 2
           body: |
             1. 🎉 **Scout Report** 🎉
-            2.
+            2. ${{ steps.scout_test_id.outputs.mdreport }}
             3. ${{join(steps.scout_test_id.outputs.*, '\n')}} 
             4. - ${{ steps.find_comment.outputs.comment-id }}
             5. - ${{ github.event.pull_request.number }}
