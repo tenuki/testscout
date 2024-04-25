@@ -3,6 +3,10 @@ on: [push]
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -27,7 +31,7 @@ jobs:
       - name: Create or Update PR Comment
         uses: peter-evans/create-or-update-comment@v4.0.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CITOKEN }}
           comment-id: ${{ steps.find_comment.outputs.comment-id }}
           edit-mode: replace
           issue-number: 2
