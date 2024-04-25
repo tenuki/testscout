@@ -14,7 +14,7 @@ jobs:
         run: ls -la
       - name: do scout
         #uses: coinfabrik/scout-actions@v2.2
-        uses: tenuki/my-test-scout-actions@testing6
+        uses: tenuki/my-test-scout-actions@testing7
         id: scout_test_id
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
