@@ -9,11 +9,12 @@ jobs:
       - name: list files
         run: ls -la
       - name: do scout
-        uses: coinfabrik/scout-actions@v2.2
+        #uses: coinfabrik/scout-actions@v2.2
+        uses: tenuki/my-test-scout-actions@testing1
         id: scout_test_id
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
-          scout_args: "--output-format md --output-path $GITHUB_OUTPUT"
+          scout_args: "--output-format md"
 
       - name: Find comment
         id: find_comment
