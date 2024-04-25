@@ -41,6 +41,6 @@ jobs:
             3. ${{join(steps.scout_test_id.outputs.*, '\n')}} 
             4. - ${{ steps.find_comment.outputs.comment-id }}
             5. - ${{ github.event.pull_request.number }}
-            6. - ${{ github.event.number }} 
+            6. - ${{ github.event.number }}  
             //needs.validate-detectors.outputs.status
             The workflow has completed. Great job! 🚀
