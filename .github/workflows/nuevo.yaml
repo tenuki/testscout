@@ -31,7 +31,7 @@ jobs:
         id: scout_test_id
         run: |
           {
-            echo 'mdreport<<EOF'
+            echo 'mdreport=<<EOF'
             $(cat sample.md)
             echo EOF
           } 
