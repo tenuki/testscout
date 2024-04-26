@@ -94,6 +94,9 @@ jobs:
           echo "1 ${{ env.MY_STRING }}"
           echo "-----------------------------------------"
           echo "2 ${{ steps.my_string.outputs.content }}"
+          echo "-----------------------------------------"
+          echo "3 ${{ first line%0Asecond line%0Athird line }}"
+          echo "-----------------------------------------"
           echo "content2=\"1 first line%0A%0Dsecond line%0A%0Dthird line\"" >> $GITHUB_OUTPUT
       - name: display string2
         run: |
