@@ -27,15 +27,23 @@ jobs:
 #        id: scout_test_id
 #        run: echo "mdreport=$(cat sample.md)" >> $GITHUB_OUTPUT
 
+#      -------------------------------
+#      - name: check output1
+#        id: scout_test_id
+#        run: |
+#          {
+#            echo 'mdreport=<<EOF'
+#            cat sample.md
+#            echo
+#            echo EOF
+#          } >> $GITHUB_OUTPUT
+#      -------------------------------
+
       - name: check output1
         id: scout_test_id
         run: |
-          {
-            echo 'mdreport=<<EOF'
-            cat sample.md
-            echo
-            echo EOF
-          } >> $GITHUB_OUTPUT
+          echo "mdreport=#hola\n#chau\n" >> $GITHUB_OUTPUT
+          echo "otra=otrovalor" >> $GITHUB_OUTPUT
 
         # #>> "$GITHUB_OUTPUT"
 #      - uses: markpatterson27/markdown-to-output@v1
@@ -48,6 +56,9 @@ jobs:
 
       - name: check output1
         run: echo ${{ steps.scout_test_id.outputs.mdreport }}
+
+      - name: check output12
+        run: echo ${{ steps.scout_test_id.outputs.otra }}
 
       - name: check output2
         run: echo ${{ steps.scout_test_id.outputs.mdreport }} >> $GITHUB_STEP_SUMMARY
