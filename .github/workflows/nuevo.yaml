@@ -1,0 +1,38 @@
+name: nuevo-workflow
+on: [push]
+
+jobs:
+  nuevo-test:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    env:
+      SAMPLE_ENV: "----------- >   VALOR EN EL ENV  < -----------"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: list files
+        run: ls -la
+      - name: do scout
+        #uses: coinfabrik/scout-actions@v2.2
+        uses: tenuki/my-test-scout-actions@testing9
+        id: scout_test_id
+        with:
+          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
+          scout_args: "--output-format md"
+          markdown_output: "true"
+
+      - name: check output1
+        run: echo ${{ steps.scout_test_id.outputs.mdreport }}
+
+      - name: check output2
+        run: echo ${{ steps.scout_test_id.outputs.mdreport }} >> $GITHUB_STEP_SUMMARY
+
+      - uses: mshick/add-pr-comment@v2.8.2
+        with:
+          message: |
+            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+            $SAMPLE_ENV
+            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+            !
+
