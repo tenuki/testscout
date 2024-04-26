@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: write
+      repository-projects: write
     env:
       SAMPLE_ENV: "----------- >   VALOR EN EL ENV  < -----------"
     steps:
