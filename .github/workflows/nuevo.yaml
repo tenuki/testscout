@@ -23,10 +23,18 @@ jobs:
 #          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
 #          markdown_output: "true"
 
+#      - name: check output1
+#        id: scout_test_id
+#        run: echo "mdreport=$(cat sample.md)" >> $GITHUB_OUTPUT
+
       - name: check output1
         id: scout_test_id
-        run: echo "mdreport=$(cat sample.md)" >> $GITHUB_OUTPUT
-
+        run: |
+          {
+            echo 'mdreport<<EOF'
+            cat sample.md
+            echo EOF
+          } >> "$GITHUB_OUTPUT"  
 
       - name: check output1
         run: echo ${{ steps.scout_test_id.outputs.mdreport }}
