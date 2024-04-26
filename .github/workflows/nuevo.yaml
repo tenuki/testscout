@@ -42,7 +42,7 @@ jobs:
       - name: check output1
         id: scout_test_id
         run: |
-          echo "mdreport=#hola\n##hasta luego\n#chau\n" >> $GITHUB_OUTPUT
+          echo "mdreport=#hola\\n##hasta luego\\n#chau\n" >> $GITHUB_OUTPUT
           echo "otra=otrovalor" >> $GITHUB_OUTPUT
 
         # #>> "$GITHUB_OUTPUT"
