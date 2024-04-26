@@ -82,9 +82,13 @@ jobs:
           MY_STRING="${MY_STRING//'%'/'%25'}"
           MY_STRING="${MY_STRING//$'\n'/'%0A'}"
           MY_STRING="${MY_STRING//$'\r'/'%0D'}"
-          echo "::set-output name=content::$MY_STRING"          
-          hd -C $GITHUB_OUTPUT
+          echo "::set-output name=content::$MY_STRING"
+          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+          echo "$MY_STRING" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
         id: my_string
       - name: display string
         run: |
-          echo "The string is: ${{ steps.my_string.outputs.content }}"
+          echo "1 ${{ env.MY_STRING }}"
+          echo "-----------------------------------------"
+          echo "2 ${{ steps.my_string.outputs.content }}"
