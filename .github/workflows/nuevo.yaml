@@ -71,6 +71,12 @@ jobs:
 #            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
 #            !
 
+
+#          MY_STRING="${MY_STRING//'%'/'%25'}"
+#          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+#          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+#          echo "::set-output name=content::$MY_STRING"
+
       - name: create string
         run: |
           MY_STRING=$(cat << EOF
@@ -79,10 +85,6 @@ jobs:
           third line
           EOF
           )
-          MY_STRING="${MY_STRING//'%'/'%25'}"
-          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
-          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
-          echo "::set-output name=content::$MY_STRING"
           echo $MY_STRING
           echo "MY_STRING<<EOF" >> $GITHUB_ENV
           echo "$MY_STRING" >> $GITHUB_ENV
