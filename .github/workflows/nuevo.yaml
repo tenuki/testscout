@@ -80,8 +80,11 @@ jobs:
       - name: create string
         run: |
           MY_STRING=$(cat << EOF
-          first line
-          second line
+          #first line
+          
+          ## second line
+          
+          
           third line
           EOF
           )
