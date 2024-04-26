@@ -88,7 +88,14 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
         id: my_string
       - name: display string
+        id: setter2
         run: |
           echo "1 ${{ env.MY_STRING }}"
           echo "-----------------------------------------"
           echo "2 ${{ steps.my_string.outputs.content }}"
+          echo "content2=${{ env.MY_STRING }}" >> $GITHUB_OUTPUT
+      - name: display string2
+        run: |
+          echo "1 ${{ env.MY_STRING }}"
+          echo "-----------------------------------------"
+          echo "2 ${{ steps.setter2.outputs.content2 }}"
