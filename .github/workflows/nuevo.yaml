@@ -93,7 +93,7 @@ jobs:
           echo "1 ${{ env.MY_STRING }}"
           echo "-----------------------------------------"
           echo "2 ${{ steps.my_string.outputs.content }}"
-          echo "content2=\"1 first line%0Asecond line%0Athird line\"" >> $GITHUB_OUTPUT
+          echo "content2=\"1 first line%0A%0Dsecond line%0A%0Dthird line\"" >> $GITHUB_OUTPUT
       - name: display string2
         run: |
           echo "2 ${{ steps.setter2.outputs.content2 }}"
