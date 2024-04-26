@@ -34,7 +34,16 @@ jobs:
             echo 'mdreport<<EOF'
             $(cat sample.md)
             echo EOF
-          } >> "$GITHUB_OUTPUT"  
+          } 
+
+        # #>> "$GITHUB_OUTPUT"
+#      - uses: markpatterson27/markdown-to-output@v1
+#        id: mto
+#        with:
+#          filepath: examples/project.md
+#      - run: |
+#          echo ${{ steps.mto.outputs.attributes }}
+#          echo ${{ steps.mto.outputs.body }}
 
       - name: check output1
         run: echo ${{ steps.scout_test_id.outputs.mdreport }}
