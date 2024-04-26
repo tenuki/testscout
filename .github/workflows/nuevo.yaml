@@ -21,7 +21,6 @@ jobs:
         id: scout_test_id
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
-          scout_args: "--output-format md"
           markdown_output: "true"
 
       - name: check output1
