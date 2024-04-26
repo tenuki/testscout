@@ -33,8 +33,9 @@ jobs:
           {
             echo 'mdreport=<<EOF'
             cat sample.md
+            echo
             echo EOF
-          } 
+          } >> $GITHUB_OUTPUT
 
         # #>> "$GITHUB_OUTPUT"
 #      - uses: markpatterson27/markdown-to-output@v1
