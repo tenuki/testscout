@@ -63,13 +63,13 @@ jobs:
       - name: check output2
         run: echo ${{ steps.scout_test_id.outputs.mdreport }} >> $GITHUB_STEP_SUMMARY
 
-      - uses: mshick/add-pr-comment@v2.8.2
-        with:
-          message: |
-            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
-            ${{ steps.scout_test_id.outputs.mdreport }}
-            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
-            !
+#      - uses: mshick/add-pr-comment@v2.8.2
+#        with:
+#          message: |
+#            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+#            ${{ steps.scout_test_id.outputs.mdreport }}
+#            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+#            !
 
       - name: create string
         run: |
@@ -103,3 +103,11 @@ jobs:
       - name: display string2
         run: |
           echo "2 ${{ steps.setter2.outputs.content2 }}"
+
+      - uses: mshick/add-pr-comment@v2.8.2
+        with:
+          message: |
+            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+            ${{ env.MY_STRING }}
+            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+            !
