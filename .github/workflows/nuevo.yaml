@@ -24,6 +24,23 @@ jobs:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
           markdown_output: "true"
 
+#      - name: do scout
+#        #uses: coinfabrik/scout-actions@v2.2
+#        uses: tenuki/my-test-scout-actions@testing12
+#        id: scout_test_id
+#        with:
+#          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
+#          scout_args: "-v"
+#          markdown_report: "true"
+#
+#      - name: do scout
+#        #uses: coinfabrik/scout-actions@v2.2
+#        uses: tenuki/my-test-scout-actions@testing12
+#        id: scout_test_id
+#        with:
+#          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
+#          #scout_args: "-v --output-format md --output-path /github/workspace/${markdown_report}"
+
 
       - name: create string
         id: my_string
@@ -33,6 +50,7 @@ jobs:
           echo "MY_STRING<<EOF" >> $GITHUB_ENV
           echo "$VAR" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
+
 #          MY_STRING=$(cat << EOF
 #          # first line
 #          ## second line
