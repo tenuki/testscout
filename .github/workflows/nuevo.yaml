@@ -15,13 +15,47 @@ jobs:
         uses: actions/checkout@v2
       - name: list files
         run: ls -la
-#      - name: do scout
-#        #uses: coinfabrik/scout-actions@v2.2
-#        uses: tenuki/my-test-scout-actions@testing12
-#        id: scout_test_id
-#        with:
-#          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
-#          markdown_output: "true"
+
+      - name: do scout
+        #uses: coinfabrik/scout-actions@v2.2
+        uses: tenuki/my-test-scout-actions@testing12
+        id: scout_test_id
+        with:
+          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
+          markdown_output: "true"
+
+
+      - name: create string
+        id: my_string
+        run: |
+          cat $GITHUB_WORKSPACE/report.md
+          export VAR=$(cat $GITHUB_WORKSPACE/report.md)
+          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+          echo "$VAR" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+#          MY_STRING=$(cat << EOF
+#          # first line
+#
+#          ## second line
+#
+#
+#          third line
+#          EOF
+#          )
+#          echo $MY_STRING
+#          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+#          echo "$MY_STRING" >> $GITHUB_ENV
+#          echo "EOF" >> $GITHUB_ENV
+
+      - uses: mshick/add-pr-comment@v2.8.2
+        with:
+          message: |
+            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+            ${{ env.MY_STRING }}
+            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+            !
+
+
 
 #      - name: check output1
 #        id: scout_test_id
@@ -39,11 +73,11 @@ jobs:
 #          } >> $GITHUB_OUTPUT
 #      -------------------------------
 
-      - name: check output1
-        id: scout_test_id
-        run: |
-          echo "mdreport=#hola\\n##hasta luego\\n#chau\n" >> $GITHUB_OUTPUT
-          echo "otra=otrovalor" >> $GITHUB_OUTPUT
+#      - name: check output1
+#        id: scout_test_id
+#        run: |
+#          echo "mdreport=#hola\\n##hasta luego\\n#chau\n" >> $GITHUB_OUTPUT
+#          echo "otra=otrovalor" >> $GITHUB_OUTPUT
 
         # #>> "$GITHUB_OUTPUT"
 #      - uses: markpatterson27/markdown-to-output@v1
@@ -54,14 +88,14 @@ jobs:
 #          echo ${{ steps.mto.outputs.attributes }}
 #          echo ${{ steps.mto.outputs.body }}
 
-      - name: check output1
-        run: echo ${{ steps.scout_test_id.outputs.mdreport }}
-
-      - name: check output12
-        run: echo ${{ steps.scout_test_id.outputs.otra }}
-
-      - name: check output2
-        run: echo ${{ steps.scout_test_id.outputs.mdreport }} >> $GITHUB_STEP_SUMMARY
+#      - name: check output1
+#        run: echo ${{ steps.scout_test_id.outputs.mdreport }}
+#
+#      - name: check output12
+#        run: echo ${{ steps.scout_test_id.outputs.otra }}
+#
+#      - name: check output2
+#        run: echo ${{ steps.scout_test_id.outputs.mdreport }} >> $GITHUB_STEP_SUMMARY
 
 #      - uses: mshick/add-pr-comment@v2.8.2
 #        with:
@@ -77,46 +111,46 @@ jobs:
 #          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
 #          echo "::set-output name=content::$MY_STRING"
 
-      - name: create string
-        id: my_string
-        run: |
-          export VAR=$(cat sample.md)
-          echo "MY_STRING<<EOF" >> $GITHUB_ENV
-          echo "$VAR" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-#          MY_STRING=$(cat << EOF
-#          # first line
-#
-#          ## second line
-#
-#
-#          third line
-#          EOF
-#          )
-#          echo $MY_STRING
+#      - name: create string
+#        id: my_string
+#        run: |
+#          export VAR=$(cat sample.md)
 #          echo "MY_STRING<<EOF" >> $GITHUB_ENV
-#          echo "$MY_STRING" >> $GITHUB_ENV
+#          echo "$VAR" >> $GITHUB_ENV
 #          echo "EOF" >> $GITHUB_ENV
-      - name: display string
-        id: setter2
-        run: |
-          echo "1 ${{ env.MY_STRING }}"
-          echo "-----------------------------------------"
-          echo "2 ${{ steps.my_string.outputs.content }}"
-          echo "-----------------------------------------"
-          echo "3 first line%0A%0Dsec\nond line%0A%0Dthird line  " 
-          echo "-----------------------------------------"
-          echo "4 $MY_STRING" 
-          echo "-----------------------------------------"
-          echo "content2=\"1 first line%0A%0Dsecond line%0A%0Dthird line\"" >> $GITHUB_OUTPUT
-      - name: display string2
-        run: |
-          echo "2 ${{ steps.setter2.outputs.content2 }}"
-
-      - uses: mshick/add-pr-comment@v2.8.2
-        with:
-          message: |
-            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
-            ${{ env.MY_STRING }}
-            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
-            !
+##          MY_STRING=$(cat << EOF
+##          # first line
+##
+##          ## second line
+##
+##
+##          third line
+##          EOF
+##          )
+##          echo $MY_STRING
+##          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+##          echo "$MY_STRING" >> $GITHUB_ENV
+##          echo "EOF" >> $GITHUB_ENV
+#      - name: display string
+#        id: setter2
+#        run: |
+#          echo "1 ${{ env.MY_STRING }}"
+#          echo "-----------------------------------------"
+#          echo "2 ${{ steps.my_string.outputs.content }}"
+#          echo "-----------------------------------------"
+#          echo "3 first line%0A%0Dsec\nond line%0A%0Dthird line  "
+#          echo "-----------------------------------------"
+#          echo "4 $MY_STRING"
+#          echo "-----------------------------------------"
+#          echo "content2=\"1 first line%0A%0Dsecond line%0A%0Dthird line\"" >> $GITHUB_OUTPUT
+#      - name: display string2
+#        run: |
+#          echo "2 ${{ steps.setter2.outputs.content2 }}"
+#
+#      - uses: mshick/add-pr-comment@v2.8.2
+#        with:
+#          message: |
+#            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+#            ${{ env.MY_STRING }}
+#            🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
+#            !
