@@ -35,10 +35,7 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
 #          MY_STRING=$(cat << EOF
 #          # first line
-#
 #          ## second line
-#
-#
 #          third line
 #          EOF
 #          )
