@@ -78,21 +78,25 @@ jobs:
 #          echo "::set-output name=content::$MY_STRING"
 
       - name: create string
+        id: my_string
         run: |
-          MY_STRING=$(cat << EOF
-          # first line
-          
-          ## second line
-          
-          
-          third line
-          EOF
-          )
-          echo $MY_STRING
+          export VAR=$(cat sample.md)
           echo "MY_STRING<<EOF" >> $GITHUB_ENV
           echo "$MY_STRING" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-        id: my_string
+#          MY_STRING=$(cat << EOF
+#          # first line
+#
+#          ## second line
+#
+#
+#          third line
+#          EOF
+#          )
+#          echo $MY_STRING
+#          echo "MY_STRING<<EOF" >> $GITHUB_ENV
+#          echo "$MY_STRING" >> $GITHUB_ENV
+#          echo "EOF" >> $GITHUB_ENV
       - name: display string
         id: setter2
         run: |
