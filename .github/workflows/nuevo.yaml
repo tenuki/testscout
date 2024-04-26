@@ -38,6 +38,6 @@ jobs:
         with:
           message: |
             🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
-            $SAMPLE_ENV
+            ${{ steps.scout_test_id.outputs.mdreport }}
             🌏🌏🌏🌏 **Hello** 🌏🌏🌏🌏
             !
