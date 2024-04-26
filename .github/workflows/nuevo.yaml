@@ -97,6 +97,8 @@ jobs:
           echo "-----------------------------------------"
           echo "3 first line%0A%0Dsec\nond line%0A%0Dthird line  " 
           echo "-----------------------------------------"
+          echo "4 $MY_STRING" 
+          echo "-----------------------------------------"
           echo "content2=\"1 first line%0A%0Dsecond line%0A%0Dthird line\"" >> $GITHUB_OUTPUT
       - name: display string2
         run: |
