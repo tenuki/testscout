@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+
       - name: do scout
         uses: coinfabrik/scout-actions@v2.3
         with:
