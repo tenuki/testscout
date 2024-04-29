@@ -19,10 +19,13 @@ mod avoid_autokey_upgradable {
         FailedSetCodeHash,
     }
 
+
+
     impl AvoidAutoKeyUpgradable {
         #[ink(constructor)]
         pub fn new() -> Self {
             Self {
+
                 admin: Self::env().caller(),
                 lazy_field: Lazy::new(),
                 mapping: Mapping::new(),

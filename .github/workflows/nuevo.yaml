@@ -20,18 +20,8 @@ jobs:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
           markdown_output: "true"
 
-#      - name: create string
-#        id: my_string
-#        run: |
-#          cat $GITHUB_WORKSPACE/report.md
-#          export VAR=$(cat $GITHUB_WORKSPACE/report.md)
-#          echo "MY_STRING<<EOF" >> $GITHUB_ENV
-#          echo "$VAR" >> $GITHUB_ENV
-#          echo "EOF" >> $GITHUB_ENV
-
       - uses: mshick/add-pr-comment@v2.8.2
         with:
-          #message: ${{ env.MY_STRING }}
           message-path:  ${{ github.workspace }}/report.md
           refresh-message-position: true
 
