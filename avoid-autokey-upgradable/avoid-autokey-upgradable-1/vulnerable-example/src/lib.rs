@@ -33,7 +33,7 @@ mod avoid_autokey_upgradable {
         #[ink(message)]
         pub fn upgrade_contract(&self, value: [u8; 32]) -> Result<(), Error> {
             if self.admin != Self::env().caller() {
-                    Err(Error::NotAnAdmin)
+                    return Err(Error::NotAnAdmin);
             }
 
             match self.env().set_code_hash(&value.into()) {
