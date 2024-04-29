@@ -1,8 +1,8 @@
-name: nuevo-workflow
+name: nuevo-workflow2
 on: [push]
 
 jobs:
-  nuevo-test:
+  nuevo-test2:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -11,13 +11,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-
       - name: do scout
         uses: coinfabrik/scout-actions@v2.3
         with:
           target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
           markdown_output: "true"
-
       - uses: mshick/add-pr-comment@v2.8.2
         with:
           message-path:  ${{ github.workspace }}/report.md
