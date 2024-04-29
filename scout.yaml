@@ -44,3 +44,4 @@ jobs:
             6. - ${{ github.event.number }}  
             //needs.validate-detectors.outputs.status
             The workflow has completed. Great job! 🚀
+
