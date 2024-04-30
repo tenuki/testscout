@@ -1,0 +1,48 @@
+name: Scout-actions
+on: [push]
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: list files
+        run: ls -la
+      - name: do scout
+        #uses: coinfabrik/scout-actions@v2.2
+        uses: tenuki/my-test-scout-actions@testing8
+        id: scout_test_id
+        with:
+          target: 'avoid-autokey-upgradable/avoid-autokey-upgradable-1/vulnerable-example/'
+          scout_args: "--output-format md"
+
+      - name: Find comment
+        id: find_comment
+        uses: peter-evans/find-comment@v3
+        with:
+          issue-number: 2
+          body-includes: "🎉 **Scout Report** 🎉"
+        continue-on-error: true
+
+      - name: Create or Update PR Comment
+        uses: peter-evans/create-or-update-comment@v4.0.0
+        with:
+          token: ${{ secrets.CITOKEN }}
+          comment-id: ${{ steps.find_comment.outputs.comment-id }}
+          edit-mode: replace
+          issue-number: 2
+          body: |
+            1. 🎉 **Scout Report** 🎉
+            2. ${{ steps.scout_test_id.outputs.mdreport }}
+            3. ${{join(steps.scout_test_id.outputs.*, '\n')}} 
+            4. - ${{ steps.find_comment.outputs.comment-id }}
+            5. - ${{ github.event.pull_request.number }}
+            6. - ${{ github.event.number }}  
+            //needs.validate-detectors.outputs.status
+            The workflow has completed. Great job! 🚀
+
+# old version
