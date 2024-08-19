@@ -96,7 +96,7 @@ Possible exceptions: `UnsupportedBridgeRouteError`.
 This function provides detailed information about token transfers from an EVM-compatible blockchain to other supported blockchain networks, including Stacks, Bitcoin, and other EVM-compatible chains. It verifies the validity of the transfer route and retrieves bridge information based on the destination chain and tokens.
 
 ```typescript
-  bridgeInfoFromEVM(input: BridgeInfoFromEVMInput): Promise<BridgeInfoFromEVMOutput> 
+bridgeInfoFromEVM(input: BridgeInfoFromEVMInput): Promise<BridgeInfoFromEVMOutput> 
 ```
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
