@@ -198,8 +198,7 @@ async function stacksAddressToStacksToken(chain: ChainId, address: StacksContrac
 Possible exceptions: None. The function returns `undefined` if the chainId or address is not valid.
 
 
-
-#### Errors
+### Errors
 
 - `InvalidMethodParametersError`: It is thrown when a method in the SDK receives invalid parameters.
 - `UnsupportedBridgeRouteError`: It is thrown when an attempt is made to bridge tokens between unsupported chains in the SDK.
