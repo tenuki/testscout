@@ -124,7 +124,7 @@ Possible exceptions: `UnsupportedChainError`.
 This function retrieves a list of time-locked assets for a given wallet address across multiple EVM-compatible blockchain networks. It queries smart contracts to find and return information about the assets that are currently locked in time-based agreements.
 
 ```typescript
-  getTimeLockedAssetsFromEVM(input: GetTimeLockedAssetsInput): Promise<GetTimeLockedAssetsOutput> 
+getTimeLockedAssetsFromEVM(input: GetTimeLockedAssetsInput): Promise<GetTimeLockedAssetsOutput> 
 ```
 
 Possible exceptions: `UnsupportedChainError`.
@@ -189,7 +189,7 @@ Possible exceptions: None. The function returns `undefined` if the chainId or to
 
 #### stacksAddressToStacksToken
 
-This function maps a given Stacks contract address to its corresponding known token ID
+This function maps a given Stacks contract address to its corresponding known token ID.
 
 ```typescript
 async function stacksAddressToStacksToken(chain: ChainId, address: StacksContractAddress): Promise<undefined | KnownTokenId.StacksToken>
