@@ -46,19 +46,18 @@ The `KnownTokenId` namespace manages the token IDs of supported cryptocurrencies
 
 Note: Users can transfer between different coins/tokens, not just the same token on different blockchains. For example, it's possible to convert BTC to WBTC when moving from Bitcoin to an EVM network.
 
+
 ### XLink SDK
 
 The `XLinkSDK` object contains the most important functions of this library, all grouped together. To create it:
 
-```javascript
+```typescript
 const theSdk = new XLinkSDK();
 ```
 
-#### Functions
-
 These functions are part of the `XLinkSDK` object:
 
-##### bridgeFromBitcoin
+#### bridgeFromBitcoin
 
 This function facilitates the transfer of tokens from the Bitcoin network to other supported blockchain networks. It checks the validity of the route and then calls the appropriate bridging function based on the destination chain.
 
@@ -68,21 +67,23 @@ bridgeFromBitcoin(input: BridgeFromBitcoinInput): Promise<BridgeFromBitcoinOutpu
 
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
-##### bridgeFromEVM
+#### bridgeFromEVM
+
 This function facilitates the transfer of tokens from an EVM-compatible blockchain to other supported blockchain networks, including Stacks, Bitcoin, and other EVM-compatible chains. It validates the route and calls the appropriate bridging function based on the destination chain and tokens involved.
 ```typescript
 bridgeFromEVM(input: BridgeFromEVMInput): Promise<BridgeFromEVMOutput>
 ```
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
-##### bridgeFromStacks
+#### bridgeFromStacks
 This function facilitates the transfer of tokens from the Stacks network to other supported blockchain networks, including Bitcoin and EVM-compatible chains. It validates the route and calls the appropriate bridging function based on the destination chain and tokens involved.
 ```typescript
 bridgeFromStacks(input: BridgeFromStacksInput): Promise<BridgeFromStacksOutput>
 ```
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
-##### bridgeInfoFromBitcoin
+#### bridgeInfoFromBitcoin
+
 This function provides detailed information about token transfers from the Bitcoin network to other supported blockchain networks, including Stacks and EVM-compatible chains. It verifies the validity of the transfer route and retrieves bridge information based on the destination chain.
 
 ```typescript
@@ -90,7 +91,8 @@ const bridgeInfoFromBitcoin = async (info: BridgeInfoFromBitcoinInput): Promise<
 ```
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
-##### bridgeInfoFromEVM
+#### bridgeInfoFromEVM
+
 This function provides detailed information about token transfers from an EVM-compatible blockchain to other supported blockchain networks, including Stacks, Bitcoin, and other EVM-compatible chains. It verifies the validity of the transfer route and retrieves bridge information based on the destination chain and tokens.
 
 ```typescript
@@ -98,7 +100,8 @@ This function provides detailed information about token transfers from an EVM-co
 ```
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
-##### bridgeInfoFromStacks
+#### bridgeInfoFromStacks
+
 This function provides detailed information about token transfers from the Stacks network to other supported blockchain networks, including Bitcoin and EVM-compatible chains. It verifies the validity of the transfer route and retrieves bridge information based on the destination chain and tokens.
 
 ```typescript
@@ -106,7 +109,8 @@ bridgeInfoFromStacks(input: BridgeInfoFromStacksInput): Promise<BridgeInfoFromSt
 ```
 Possible exceptions: `UnsupportedBridgeRouteError`.
 
-##### claimTimeLockedAssetsFromEVM
+#### claimTimeLockedAssetsFromEVM
+
 This function facilitates the claiming of time-locked assets on EVM-compatible chains. It uses smart contract functions to execute the release of locked assets based on predefined conditions.
 
 ```typescript
@@ -115,7 +119,8 @@ claimTimeLockedAssetsFromEVM(input: ClaimTimeLockedAssetsInput): Promise<undefin
 
 Possible exceptions: `UnsupportedChainError`.
 
-##### getTimeLockedAssetsFromEVM
+#### getTimeLockedAssetsFromEVM
+
 This function retrieves a list of time-locked assets for a given wallet address across multiple EVM-compatible blockchain networks. It queries smart contracts to find and return information about the assets that are currently locked in time-based agreements.
 
 ```typescript
@@ -124,7 +129,8 @@ This function retrieves a list of time-locked assets for a given wallet address 
 
 Possible exceptions: `UnsupportedChainError`.
 
-##### estimateBridgeTransactionFromBitcoin
+#### estimateBridgeTransactionFromBitcoin
+
 This function estimates the transaction fee and vSize for move or swap tokens from the Bitcoin network to other supported blockchain networks, including Stacks and EVM-compatible chains.
 ```typescript
 estimateBridgeTransactionFromBitcoin(input: EstimateBridgeTransactionFromBitcoinInput): Promise<EstimateBridgeTransactionFromBitcoinOutput> 
@@ -132,38 +138,48 @@ estimateBridgeTransactionFromBitcoin(input: EstimateBridgeTransactionFromBitcoin
 
 Possible exceptions: `UnsupportedBridgeRouteError`
 
-##### evmAddressFromEVMToken
+#### evmAddressFromEVMToken
+
 This function retrieves the contract address of a specific token on a given EVM-compatible blockchain.
+
 ```typescript
 async evmAddressFromEVMToken(chain: ChainId, token: KnownTokenId.EVMToken): Promise<undefined | EVMAddress>
 ```
+
 Possible exceptions: None. The function returns `undefined` if the chain is not EVM-compatible or if the contract address cannot be retrieved.
 
-##### evmAddressToEVMToken 
+#### evmAddressToEVMToken 
+
 This function maps a given contract address on an EVM-compatible blockchain to its corresponding known token ID.
 
 ```typescript
 async evmAddressToEVMToken(chain: ChainId, address: EVMAddress): Promise<undefined | KnownTokenId.EVMToken>
 ```
+
 Possible exceptions: None. The function returns `undefined` if the chain is not EVM-compatible or if the address cannot be matched.
 
-##### getEVMContractAddress
+#### getEVMContractAddress
+
 This function retrieves the contract address of a specific type of contract (e.g., a bridge endpoint) on a given EVM-compatible blockchain.
+
 ```typescript
 async getEVMContractAddress(chain: ChainId, contractType: PublicEVMContractType): Promise<undefined | EVMAddress>
 ```
 
 Possible exceptions: None. The function returns `undefined` if the chain is not EVM-compatible or if the address cannot be matched.
 
-##### getSupportedRoutes
+#### getSupportedRoutes
+
 This function retrieves the list of supported routes for token transfers between blockchain networks, filtered based on optional conditions. It aggregates the results from different blockchain networks (Stacks, EVM, Bitcoin) to return a list of possible routes.
+
 ```typescript
 async getSupportedRoutes(conditions?: GetSupportedRoutesFn_Conditions): Promise<KnownRoute[]> 
 ```
 
-Possible exceptions: none
+Possible exceptions: None.
 
-##### stacksAddressFromStacksToken
+#### stacksAddressFromStacksToken
+
 This function retrieves the contract address associated with a specific token on the Stacks blockchain. 
 
 ```typescript
@@ -171,7 +187,8 @@ async function stacksAddressFromStacksToken(chain: ChainId, token: KnownTokenId.
 ```
 Possible exceptions: None. The function returns `undefined` if the chainId or token is not valid.
 
-##### stacksAddressToStacksToken
+#### stacksAddressToStacksToken
+
 This function maps a given Stacks contract address to its corresponding known token ID
 
 ```typescript
@@ -181,16 +198,6 @@ async function stacksAddressToStacksToken(chain: ChainId, address: StacksContrac
 Possible exceptions: None. The function returns `undefined` if the chainId or address is not valid.
 
 
-#### Additional Function
-Apart from those functions found in the XLinkSDK object, there is another utility function:
-##### toSDKNumberOrUndefined
-This function attempts to convert a given value into an SDKNumber.
-```typescript
-function toSDKNumberOrUndefined<T extends null | undefined | SDKNumber | number | bigint | BigNumber
-                            >(n: T): Exclude<T, number | bigint | BigNumber> | SDKNumber
-```
-
-Possible exceptions: If the input is null, the function returns `undefined`. If the input cannot be converted to a valid number, it throws an `InvalidMethodParametersError`.
 
 #### Errors
 
